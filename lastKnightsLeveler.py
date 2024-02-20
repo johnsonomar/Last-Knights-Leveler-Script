@@ -10,7 +10,6 @@ driver = webdriver.Firefox(options=options)
 link = "https://lastknights.com/"
 driver.get(link)
 driver.implicitly_wait(5)
-#def main():
 
 
 def login():
@@ -44,6 +43,11 @@ def battleBehavior():  # if above certain level, stop recruiting troops, and sta
         print(f"{levelCheck()}  {terrainCheck()}")
         # eventually go border
         # must account for other types of battles
+
+
+def goBarracks():
+    b_sub = "city/barracks"
+    driver.get(link + b_sub)
 
 
 def goTrain():
@@ -93,11 +97,11 @@ def mapTerrain():
     if map_check == "asia":
         map_terrain = ["desert", "forest", "jungle", "mountains", "plains"]
     if map_check == "rome":
-        map_terrain = []
+        map_terrain = ["desert", "forest", "snow", "mountains", "plains"]
     if map_check == "africa":
-        map_terrain = []
+        map_terrain = ["desert", "forest", "mountains", "plains"]
     if map_check == "europe":
-        map_terrain = []
+        map_terrain = ["desert", "forest", "snow", "mountains", "plains"]
     if map_check == "america":
         map_terrain = []
     return map_terrain
@@ -109,6 +113,7 @@ def bestTerrainCheck():
     best_terrain_val = 0
     terrains: dict = {}
     values = []
+    #This might break in Africa
     for i in range(1, 6):
         t_ref = f"/html/body/tlk-root/div/div/div/div/tlk-encampment/div[1]/div[2]/div[1]/div[2]/div[3]/div/div[{i}]/tlk-terrainbonus/span/img"
         v_ref = f"/html/body/tlk-root/div/div/div/div/tlk-encampment/div[1]/div[2]/div[1]/div[2]/div[3]/div/div[{i}]/tlk-terrainbonus/span/span"
@@ -215,7 +220,7 @@ def moveBestTerrain():  # WIP
         # check for second-best terrain and move to city with it
 
 
-def advMoveBestTerrain():
+def advMoveBestTerrain(): #Okay, so the idea is to read the html elements containing city names and terrain types into a dictionary. we then check if border city in that list
     goMap()
     print("No viable cities for battle on the border, we must search for optimal terrain!")
     city = cityCheck()
@@ -281,7 +286,20 @@ def leveler():
                 continue
             break
 
-#main()
+def recruiter():
+
+# /html/body/tlk-root/tlk-userbar/div[2]/div[1]/div/span
+# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[1]/div/tlk-experience-event/span
+# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[10]/div[2]/tlk-promotion-event/div[1]
+# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[13]/div[1]
+# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[12]/div[2]/tlk-promotion-event/div[1]
+
 login()
 driver.implicitly_wait(1)
 leveler()
+# moveBestTerrain()
+# if promotion event, return to barracks
+# first hero at Lance Corporal - hero hire mechanic along with unit hire mechanic
+# need to determine what map is being played, then determine available terrains, then what terrains are best for faction
+
+# at the beginning of an age, player must select random civ. needs to do this action.
