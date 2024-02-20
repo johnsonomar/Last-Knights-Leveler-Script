@@ -286,17 +286,35 @@ def leveler():
                 continue
             break
 
-def recruiter():
-
-# /html/body/tlk-root/tlk-userbar/div[2]/div[1]/div/span
-# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[1]/div/tlk-experience-event/span
-# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[10]/div[2]/tlk-promotion-event/div[1]
-# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[13]/div[1]
-# /html/body/tlk-root/div/div/div/div/tlk-training/div/div[2]/div[2]/div/div[2]/tlk-battle-result[12]/div[2]/tlk-promotion-event/div[1]
+#def recruiter():
 
 login()
 driver.implicitly_wait(1)
 leveler()
+
+# first thing we should do is recruit troops!
+#Eventually we want the user to be able to select custom army comps
+# troop head count function
+    # goCamp() 
+    # run through elements containing heroes.
+        #if no heroes
+            # break
+        # else:
+            # count heroes
+    # run through army
+        #if no army
+            # recruit troops
+        # count army
+
+
+# recruit function
+# in order to recruit troops, you must spend authority
+# select a type of troop you want
+
+# count authority
+        
+
+
 # moveBestTerrain()
 # if promotion event, return to barracks
 # first hero at Lance Corporal - hero hire mechanic along with unit hire mechanic
