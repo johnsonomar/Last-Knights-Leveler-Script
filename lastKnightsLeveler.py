@@ -295,6 +295,8 @@ leveler()
 # Make program stateful
     #Must collect and update troop counts, army stats, and other values that are reused often and determine what other segments of the program will do 
 
+#Must pick a nation at the beginning of the age, or after civ is defeated. This should be checked immediately after login
+
 # first thing we should do is recruit troops!
 #Eventually we want the user to be able to select custom army comps
 # troop head count function
