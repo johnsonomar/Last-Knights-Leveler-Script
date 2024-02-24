@@ -47,7 +47,8 @@ def battleBehavior():  # if above certain level, stop recruiting troops, and sta
 
 def goPickNation():
     n_sub = "nation/join"
-    driver.get(link + n_sub)
+    if driver.current_url != link + n_sub:
+        driver.get(link + n_sub)
     driver.implicitly_wait(3)
     button_ref = "/html/body/tlk-root/div/div/div/div/tlk-join/p[2]/button"
     button = driver.find_element(by=By.XPATH, value=button_ref)
@@ -298,7 +299,10 @@ def leveler():
                 continue
             break
 
-#def recruiter():
+
+def recruiter():
+    pass
+
 
 login()
 driver.implicitly_wait(1)
