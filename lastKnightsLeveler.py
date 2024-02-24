@@ -292,6 +292,9 @@ login()
 driver.implicitly_wait(1)
 leveler()
 
+# Make program stateful
+    #Must collect and update troop counts, army stats, and other values that are reused often and determine what other segments of the program will do 
+
 # first thing we should do is recruit troops!
 #Eventually we want the user to be able to select custom army comps
 # troop head count function
