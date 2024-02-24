@@ -45,6 +45,18 @@ def battleBehavior():  # if above certain level, stop recruiting troops, and sta
         # must account for other types of battles
 
 
+def goPickNation():
+    n_sub = "nation/join"
+    driver.get(link + n_sub)
+    driver.implicitly_wait(3)
+    button_ref = "/html/body/tlk-root/div/div/div/div/tlk-join/p[2]/button"
+    button = driver.find_element(by=By.XPATH, value=button_ref)
+    ActionChains(driver) \
+            .pause(1) \
+            .click(button) \
+            .pause(1) \
+            .perform()
+
 def goBarracks():
     b_sub = "city/barracks"
     driver.get(link + b_sub)
@@ -290,17 +302,19 @@ def leveler():
 
 login()
 driver.implicitly_wait(1)
+goPickNation()
+driver.implicitly_wait(1)
 leveler()
 
 # Make program stateful
-    #Must collect and update troop counts, army stats, and other values that are reused often and determine what other segments of the program will do 
+    #Must collect and update troop counts, army stats, and other values that are reused often and determine what other segments of the program will do
 
 #Must pick a nation at the beginning of the age, or after civ is defeated. This should be checked immediately after login
 
 # first thing we should do is recruit troops!
 #Eventually we want the user to be able to select custom army comps
 # troop head count function
-    # goCamp() 
+    # goCamp()
     # run through elements containing heroes.
         #if no heroes
             # break
@@ -317,7 +331,6 @@ leveler()
 # select a type of troop you want
 
 # count authority
-        
 
 
 # moveBestTerrain()
@@ -325,4 +338,3 @@ leveler()
 # first hero at Lance Corporal - hero hire mechanic along with unit hire mechanic
 # need to determine what map is being played, then determine available terrains, then what terrains are best for faction
 
-# at the beginning of an age, player must select random civ. needs to do this action.
